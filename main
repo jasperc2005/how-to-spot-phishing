@@ -1,0 +1,42 @@
+How to Spot a Phishing Email: Realistic (But Obvious) Examples — and Why They’re Danger
+“Below are simulated phishing emails you can use to teach colleagues and readers what to watch for. Each example is intentionally obvious and annotated with the red flags to help you spot scams quickly.”
+
+
+
+
+
+Example 1 — Credential-harvesting (classic fake account alert)
+
+[SIMULATION — EDUCATIONAL ONLY]
+
+From: Customer Support support@microsoftt.invalid
+
+To: you@yourcompany.com
+
+Subject: Urgent — Verify Your Account Now or It Will Be Closed
+
+Hello,
+
+We detected suspicious activity on your account. For your protection, we have temporarily suspended access. To restore your account, please verify your identity at the link below within 24 hours:
+
+https://verify-account.example.invalid/reset
+
+If you do not verify your account within 24 hours, your account will be permanently closed.
+
+Thank you,
+Account Security Team
+
+
+The four main red flags within this email are:
+
+1. A sense of urgency, most phishing promt for fast action, this creates a pressure and doe not allow the user to do research.
+2. Generic naming, the sender uses 'Hello', if it is a genuine compant they are likely to have you information.
+3. The domain here is not matching the typical microsoft.com domain, if the email did have microsoft.com as the domain it is likely that the email is legitimate unless being spoofed.
+
+
+
+How to check if an EMAIL ADRESS is spoofed?
+
+
+
+
