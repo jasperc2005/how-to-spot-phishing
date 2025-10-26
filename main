@@ -38,5 +38,72 @@ The four main red flags within this email are:
 How to check if an EMAIL ADRESS is spoofed?
 
 
+Quick checklist (do this first)
 
+Don’t click links or open attachments.
+
+Check the visible sender (display name) vs the email address shown — display names are trivially faked.
+
+View the full message headers (instructions below).
+
+Verify authentication results in the headers (SPF / DKIM / DMARC).
+
+Confirm the first Received: hop IP makes sense for that sender — corporate mail normally comes from known provider IPs.
+
+If still unsure, contact the sender using a known-good channel (phone, corporate directory), not by replying to the suspicious message.
+
+How to view full headers (common clients)
+
+Gmail (web): open message → click ⋮ (three dots) → Show original.
+
+Outlook (desktop): open message → File → Properties → Internet headers (or Message Options).
+
+Outlook (web): open → ⋯ → View message source.
+
+Apple Mail: View → Message → Raw Source.
+
+Mobile apps often hide headers; use the desktop/web client when possible.
+
+What to look for in the headers (and what it means)
+
+Search the headers for these lines and interpret them:
+
+Authentication-Results:
+
+Look for spf=pass or spf=fail (or neutral, softfail).
+
+Look for dkim=pass or dkim=fail.
+
+Look for dmarc=pass or dmarc=fail.
+If SPF and/or DKIM and DMARC pass, the message is far more likely to be authentic. If one or more fail, that’s a red flag — but not definitive on its own.
+
+Return-Path (envelope from) vs From: header
+
+Attackers often set the From: to a forged address but the underlying Return-Path (bounce address) or envelope-from will differ. Mismatch can indicate spoofing.
+
+Received: lines (read bottom→top)
+
+The bottom-most Received: is the first server that accepted the message from the sender. Check the originating IP and hostname — does it match the sender’s mail provider (e.g., Google, Microsoft, your company mail servers)?
+
+If it came directly from an unexpected residential IP or a country/provider that doesn’t match the sender, that’s suspicious.
+
+DKIM-Signature:
+
+Presence of a valid DKIM signature means the sending domain cryptographically signed the message; dkim=pass indicates the signature is valid and that the headers/body weren’t tampered with after signing.
+
+SPF check:
+
+SPF compares the sending IP against the domain’s SPF DNS TXT record. spf=pass is good. spf=fail is suspicious.
+
+Note: SPF can fail legitimately for forwarded mail (because the forwarder’s IP isn’t in the original domain’s SPF), so interpret carefully.
+
+DMARC policy:
+
+DMARC tells receivers what to do if SPF/DKIM fail. A p=reject published by the sending domain makes spoofing much harder; p=none means domain owner isn’t enforcing.
+
+Reply-To and List-Id headers
+
+Check Reply-To — attackers sometimes put a different reply-to address to capture responses.
+
+Commands to check DNS records yourself
 
